@@ -30,19 +30,14 @@ function calculateDeliveryDate() {
   );
 
   // Construct the output message with breakdown
-  let breakdown = `Your order is expected to be dispatched by ${estimatedDate}, based on the following timeline:
-  
-Order Date: ${orderDate}
-Dispatch Time for Unstitched Blouse: ${unstitchedDays} working days (Expected dispatch: ${unstitchedDays1.toDateString()})`;
+  let breakdown = `The dispatch time for unstitched blouse is ${unstitchedDays} days and the estimated dispatch date in that case will be ${unstitchedDays1.toDateString()}.\n`;
   if (stitchedDays > 0)
-    breakdown += ` Additional Time for Stitched Blouse: ${stitchedDays} working days after the unstitched blouse dispatch date (Expected dispatch: ${stitchedDays1.toDateString()}`;
+    breakdown += ` The dispatch timeline for stitched blouse is additional ${stitchedDays} days and the estimated dispatch date in that case is ${stitchedDays1.toDateString()}.\n`;
   if (wrapOnDays > 0)
-    breakdown += `Additional Time for Wrap on saree: ${wrapOnDays} working days after the unstitched blouse dispatch date (Expected dispatch: ${wrapOnDays1.toDateString()}`;
-  breakdown += `Based on this, your final dispatch date is expected on ${estimatedDate.toDateString()}
+    breakdown += `The dispatch time for wrap-on saree is additional ${wrapOnDays} days and the estimated dispatch date in that case is ${wrapOnDays1.toDateString()}.\n`;
+  breakdown += `So according to the above breakdown, your estimated dispatch date is ${estimatedDate.toDateString()}`;
 
-We appreciate your patience and look forward to delivering your order soon! Let us know if you have any questions. 😊`;
-
-  const message = `Hi, According to the timeline mentioned on our website, expected delivery date is ${estimatedDate.toDateString()}. The breakdown is: ${breakdown}`;
+  const message = `Hi, According to the timeline mentioned on our website, expected dispatch date is ${estimatedDate.toDateString()}. The breakdown is: ${breakdown}`;
 
   // Output the results
   document.getElementById("delivery-date").innerText =
